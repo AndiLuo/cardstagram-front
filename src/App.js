@@ -10,7 +10,7 @@ import LandingPage from './components/landingPage'
 import createPinForm from '../src/components/createPinForm'
 
 const client = new ApolloClient({
-  uri: 'https://cardstagram.herokuapp.com/graphql/pins',
+  uri: 'https://cardstagram.herokuapp.com/api/pins',
 });
 
 

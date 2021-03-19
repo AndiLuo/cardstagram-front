@@ -57,5 +57,5 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "https://cardstagram.herokuapp.com/graphql/pins"
+  "proxy": "https://cardstagram.herokuapp.com/"
 }
