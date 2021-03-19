@@ -46,7 +46,6 @@ function LandingPage(props) {
         textAlign: "center"
       };
 
-    const {classes} = props;
 
     //assign useHistory function to a const for routing
     const history = useHistory()
