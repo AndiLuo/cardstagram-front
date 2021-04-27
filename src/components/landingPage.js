@@ -7,6 +7,8 @@ import { useHistory } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { withStyles } from "@material-ui/core/styles";
+import Blank from './blank'
+import {searchPin, fetchPins, setLoading} from "../actions/fetchAction";
 
 const styles = {
   root: {
@@ -24,7 +26,7 @@ const styles = {
 
 
 const mapStateToProps = state => ({
-    loading: state.pins.loading
+    loading: state.pins.loading,
   })
 
 function LandingPage(props) {
@@ -54,8 +56,10 @@ function LandingPage(props) {
     const redirectCreate = () => {
         history.push('/createPin')
       }
-    
+  
     const loading = props.loading
+    const wait = "Application is loading...."
+  
     return(
         <div>
             <div style={jumboStyle}>
@@ -73,7 +77,8 @@ function LandingPage(props) {
                     Create your own card!
                 </Button>
             </span>
-            {loading ? <Spinner/> : <PinContainer/> }
+            {loading ?  <Spinner/> : <PinContainer/> }
+            {loading ?  <Spinner/> : <Blank/>}
             </div>
         </div>
     )

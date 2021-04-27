@@ -6,6 +6,7 @@ import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import { Link } from "react-router-dom";
 import { withStyles } from "@material-ui/core/styles";
+import createBreakpoints from '@material-ui/core/styles/createBreakpoints';
 
 const styles = {
     root: {
@@ -25,7 +26,12 @@ class NewPin extends Component {
     constructor() {
         super();
         this.state = {
-            pin: {},
+            pin: {
+                title: '',
+                author:'',
+                image:''
+
+            },
             confirm: ''
         };
     }
@@ -34,12 +40,17 @@ class NewPin extends Component {
     }
     //looks at each textfields ID and sets values in this.state.pin according to that textfields value
     createSubmission(e) {
-        let pinSubmission = Object.assign({}, this.state.pin)
+        const pinSubmission = Object.assign({}, this.state.pin)
         pinSubmission[e.target.id] = e.target.value
+        if (pinSubmission <= 3){
+            alert('Must be more than 3 letters')
+        }
+        console.log(pinSubmission.title.length)
         this.setState({
             pin: pinSubmission
         })
     }
+
     //calls createPin action and assigns the pin state to body
     handleSubmit(e) {
         e.preventDefault()
@@ -50,10 +61,22 @@ class NewPin extends Component {
 
     confirmEntry(e) {
         e.preventDefault()
-        this.setState({
-            confirm: 'true'
-        })
-        alert('Entry confirmed, please press create pin ')
+        if (this.state.pin.title.length < 3 ){
+            alert('Title must be at least 3 characters')
+        }
+        if (this.state.pin.author.length < 3){
+            alert('Author must be at least 3 characters')
+        }
+        if (this.state.pin.image.length < 10){
+            alert('Must be a valid image URL')
+        }
+        else{
+            this.setState({
+                confirm: 'true'
+            })
+            alert('Entry confirmed, please press create pin ')
+        }   
+        console.log(this.state.pin)
     }
 
     validateEntry() {
@@ -90,7 +113,7 @@ class NewPin extends Component {
                                 textAlign: "center",
                                 fontFamily: "Consolas",
                             }
-                        }} InputProps={{className: classes.input}} required onChange={this.createSubmission.bind(this)} size="medium" id="title" type="text" label="Title" /><br />
+                        }} InputProps={{className: classes.input}} required onChange={this.createSubmission.bind(this)} placeholder="At least 3 letters" size="medium" id="title" type="text" label="Title" /><br />
                         <TextField InputLabelProps={{
                             style: {
                                 color: "white",
@@ -98,7 +121,7 @@ class NewPin extends Component {
                                 textAlign: "center",
                                 fontFamily: "Consolas",
                             }
-                        }} InputProps={{className: classes.input}} required onChange={this.createSubmission.bind(this)} id="author" type="text" label="Author" /><br />
+                        }} InputProps={{className: classes.input}} required onChange={this.createSubmission.bind(this)} placeholder="At least 3 letters"  id="author" type="text" label="Author" /><br />
                         <TextField InputLabelProps={{
                             style: {
                                 color: "white",
@@ -106,12 +129,12 @@ class NewPin extends Component {
                                 textAlign: "center",
                                 fontFamily: "Consolas",
                             }
-                        }} InputProps={{className: classes.input}} required onChange={this.createSubmission.bind(this)} id="image" type="text" label="Image" /><br />
+                        }} InputProps={{className: classes.input}} required onChange={this.createSubmission.bind(this)} id="image" type="text" label="ImageURL" /><br />
                         <p style={{ color: "white", fontSize: "1vw" }}>Enter a description</p>
                         <br />
                         <TextField InputProps={{className: classes.input}}  style={{fontSize:"15px", color:"white"}} multiline rows={3} onChange={this.createSubmission.bind(this)} variant="outlined" id="description" type="enter a description..." />
                         <br />
-                        <TextField InputLabelProps={{
+                        {/* <TextField InputLabelProps={{
                             style: {
                                 color: "white",
                                 fontSize: "0.6vw",
@@ -127,7 +150,7 @@ class NewPin extends Component {
                                 textAlign: "center",
                                 fontFamily: "Consolas",
                             }
-                        }} InputProps={{className: classes.input}} required onChange={this.createSubmission.bind(this)} id="height" type="number" label="Designate height" />
+                        }} InputProps={{className: classes.input}} required onChange={this.createSubmission.bind(this)} id="height" type="number" label="Designate height" /> */}
 
                         <br />
                         <br />

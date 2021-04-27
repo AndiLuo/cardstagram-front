@@ -43,7 +43,7 @@ export const fetchReducer = (state = initialState, action) => {
         ...state,
         //assigns state of pins array
         pins: action.payload,
-        loading: false
+        loading:false
       }   
     default:
       return state

@@ -21,7 +21,6 @@ export const fetchPins = (search) => (dispatch) => {
   let gallery = []
   axios
     .get(
-      // `https://api.unsplash.com/search/photos?page=1&per_page=100&client_id=NtL294oB-F0DzGplMDDWZB-sx5pb3TwXEg4h3nIOI1I&query=${search}`
       'https://cardstagram.herokuapp.com/api/pins'
     )
     .then((response) => {

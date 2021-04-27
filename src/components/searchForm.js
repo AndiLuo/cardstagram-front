@@ -32,7 +32,7 @@ function SearchForm(props) {
   // sets search state to input value, call fetchPins here for auto fetch on input change
   const handleChange = (e) => {
     e.preventDefault()
-    if (e.target.value.length > 3 ){
+    if (e.target.value.length >= 2 ){
       props.searchPin(e.target.value);
       props.setLoading();
       props.fetchPins(props.searchText)
