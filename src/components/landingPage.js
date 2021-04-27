@@ -78,7 +78,6 @@ function LandingPage(props) {
                 </Button>
             </span>
             {loading ?  <Spinner/> : <PinContainer/> }
-            {loading ?  <Spinner/> : <Blank/>}
             </div>
         </div>
     )
