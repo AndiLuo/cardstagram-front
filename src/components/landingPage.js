@@ -7,8 +7,7 @@ import { useHistory } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { withStyles } from "@material-ui/core/styles";
-import Blank from './blank'
-import {searchPin, fetchPins, setLoading} from "../actions/fetchAction";
+
 
 const styles = {
   root: {
