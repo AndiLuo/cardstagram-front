@@ -57,7 +57,7 @@ function LandingPage(props) {
       }
   
     const loading = props.loading
-    const wait = "Application is loading...."
+  
   
     return(
         <div>
