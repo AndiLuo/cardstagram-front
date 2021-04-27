@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import SearchForm from './searchForm';
 import {connect} from 'react-redux';
 import PinContainer from './pinContainer';
@@ -28,7 +28,18 @@ const mapStateToProps = state => ({
     loading: state.pins.loading,
   })
 
+
 function LandingPage(props) {
+    const [loaded, setLoaded] = useState(false)
+    const [loadMessage, setLoadMessage] = useState('')
+
+    useEffect(() => {
+      setLoadMessage('Please wait while cards load in......')
+      setTimeout(() => {
+        setLoaded(true)
+        setLoadMessage('')
+      }, 8000)
+    }, [])
 
     const jumboStyle = {
         color: "white",
@@ -55,7 +66,7 @@ function LandingPage(props) {
     const redirectCreate = () => {
         history.push('/createPin')
       }
-  
+      
     const loading = props.loading
   
   
@@ -76,7 +87,18 @@ function LandingPage(props) {
                     Create your own card!
                 </Button>
             </span>
-            {loading ?  <Spinner/> : <PinContainer/> }
+            <div>
+              {loaded  && 
+                <div>
+                {loading ?  <Spinner/> : <PinContainer/> }
+               </div>
+              }
+            </div>
+            <br/>
+            <br/>
+            <div style={{fontFamily:"Consolas", fontSize:"4vw", color:"white"}}>
+            {loadMessage}
+            </div>
             </div>
         </div>
     )

@@ -11,6 +11,25 @@ const initialState = {
   pin: {}
 }
 
+export const landingReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case LOADING:
+      return {
+        ...state,
+        loading: true
+      }
+      case FETCH_PINS:
+        return {
+          ...state,
+          //assigns state of pins array
+          loading: false
+        }   
+    default:
+      return state
+
+  }
+}
+
 export const inputReducer = (state = initialState, action) => {
   switch (action.type) {
     case SEARCH_PIN:
