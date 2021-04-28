@@ -38,7 +38,7 @@ function LandingPage(props) {
       setTimeout(() => {
         setLoaded(true)
         setLoadMessage('')
-      }, 8000)
+      }, 10000)
     }, [])
 
     const jumboStyle = {

@@ -31,7 +31,8 @@ class NewPin extends Component {
                 image:''
 
             },
-            confirm: ''
+            confirm: '',
+            send: false
         };
     }
 
@@ -44,19 +45,30 @@ class NewPin extends Component {
         if (pinSubmission <= 3){
             alert('Must be more than 3 letters')
         }
-        console.log(pinSubmission.title.length)
         this.setState({
             pin: pinSubmission
         })
     }
 
+    reloadPage(){
+        if( this.state.send === true){
+            window.location.reload()
+        }
+    }
+
     //calls createPin action and assigns the pin state to body
     handleSubmit(e) {
         e.preventDefault()
-        this.props.dispatch(createPin(this.state.pin));
-        this.props.history.push("/");
-        this.props.history.go(0)
-        console.log(this.state.pin)
+        if (this.state.send == false){
+            this.props.dispatch(createPin(this.state.pin));
+            alert("Card has been created")
+            setTimeout(() => {
+                this.setState({
+                    send: true
+                })
+            }, 200)
+        }
+       
     }
 
     confirmEntry(e) {
@@ -76,7 +88,7 @@ class NewPin extends Component {
             })
             alert('Entry confirmed, please press create pin ')
         }   
-        console.log(this.state.pin)
+
     }
 
     validateEntry() {
@@ -122,6 +134,7 @@ class NewPin extends Component {
                                 fontFamily: "Consolas",
                             }
                         }} InputProps={{className: classes.input}} required onChange={this.createSubmission.bind(this)} placeholder="At least 3 letters"  id="author" type="text" label="Author" /><br />
+
                         <TextField InputLabelProps={{
                             style: {
                                 color: "white",
@@ -130,9 +143,13 @@ class NewPin extends Component {
                                 fontFamily: "Consolas",
                             }
                         }} InputProps={{className: classes.input}} required onChange={this.createSubmission.bind(this)} id="image" type="text" label="ImageURL" /><br />
+                        <br/>
+                        (Please Right-Click an online image and "Copy Image location" then Paste here)
+                        <br/>
                         <br />
                         <TextField InputProps={{className: classes.input}} placeholder="Enter a Description" style={{fontSize:"15px", color:"white"}} multiline rows={3} onChange={this.createSubmission.bind(this)} variant="outlined" id="description" type="enter a description..." />
                         <br />
+                        
                         {/* <TextField InputLabelProps={{
                             style: {
                                 color: "white",
@@ -167,6 +184,7 @@ class NewPin extends Component {
                             Create Card</Button>
                     </form>
                 </div>
+                {this.reloadPage()}
             </div>
         )
     }
