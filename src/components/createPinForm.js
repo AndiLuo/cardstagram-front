@@ -55,6 +55,7 @@ class NewPin extends Component {
         e.preventDefault()
         this.props.dispatch(createPin(this.state.pin));
         this.props.history.push("/");
+        this.props.history.go(0)
         console.log(this.state.pin)
     }
 
@@ -129,9 +130,8 @@ class NewPin extends Component {
                                 fontFamily: "Consolas",
                             }
                         }} InputProps={{className: classes.input}} required onChange={this.createSubmission.bind(this)} id="image" type="text" label="ImageURL" /><br />
-                        <p style={{ color: "white", fontSize: "1vw" }}>Enter a description</p>
                         <br />
-                        <TextField InputProps={{className: classes.input}}  style={{fontSize:"15px", color:"white"}} multiline rows={3} onChange={this.createSubmission.bind(this)} variant="outlined" id="description" type="enter a description..." />
+                        <TextField InputProps={{className: classes.input}} placeholder="Enter a Description" style={{fontSize:"15px", color:"white"}} multiline rows={3} onChange={this.createSubmission.bind(this)} variant="outlined" id="description" type="enter a description..." />
                         <br />
                         {/* <TextField InputLabelProps={{
                             style: {

@@ -32,6 +32,9 @@ function Pin(props) {
                         <Typography>
                             {pin.pins.author}
                         </Typography>
+                        <Typography>
+                            {pin.pins.description}
+                        </Typography>
 
 
                     </CardContent>
