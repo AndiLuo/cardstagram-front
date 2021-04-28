@@ -18,29 +18,35 @@ export const setLoading = () => {
 
 export const fetchPins = (search) => (dispatch) => {
   // initialize gallery in the beginning so it empties each call
-  let gallery = []
+  const gallery = []
+  const realGallery = []
   axios
     .get(
       'https://cardstagram.herokuapp.com/api/pins'
     )
     .then((response) => {
       console.log(response)
-      setTimeout(() => {
       // initialize array for pins
       response.data.forEach(image => {
-        // checks if search results contain title OR username
-        if ((image.title).toLowerCase().includes(search.toLowerCase()) || (image.author).toLowerCase().includes(search.toLowerCase())
-           ) {
-             gallery.push(image)
-            //  gallery.push(image)
-          }
-        })
-        dispatch({
-          type: FETCH_PINS,
-          // EVERYTHING IS IMMUTABLE
-          payload: gallery,
-        });
-      }, 1500)
+        gallery.push(image)
+      })
     })
+      .then(()=>{
+        gallery.forEach(image => {
+          if ((image.title).toLowerCase().includes(search.toLowerCase()) || (image.author).toLowerCase().includes(search.toLowerCase())
+             ) {
+               realGallery.push(image)
+            }
+          })
+          console.log(gallery)
+          console.log(realGallery)
+          dispatch({
+            type: FETCH_PINS,
+            // EVERYTHING IS IMMUTABLE
+            payload: realGallery,
+          });
+      })
+
+      // })
     .catch((err) => console.log(err));
 };

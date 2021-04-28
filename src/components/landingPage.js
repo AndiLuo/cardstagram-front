@@ -38,7 +38,7 @@ function LandingPage(props) {
       setTimeout(() => {
         setLoaded(true)
         setLoadMessage('')
-      }, 10000)
+      }, 3000)
     }, [])
 
     const jumboStyle = {
@@ -88,11 +88,11 @@ function LandingPage(props) {
                 </Button>
             </span>
             <div>
-              {loaded  && 
+             
                 <div>
-                {loading ?  <Spinner/> : <PinContainer/> }
+                {loaded ?  <PinContainer/>: " " }
                </div>
-              }
+              
             </div>
             <br/>
             <br/>
