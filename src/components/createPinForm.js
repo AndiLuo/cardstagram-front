@@ -59,7 +59,7 @@ class NewPin extends Component {
     //calls createPin action and assigns the pin state to body
     handleSubmit(e) {
         e.preventDefault()
-        if (this.state.send == false){
+        if (this.state.send === false){
             this.props.dispatch(createPin(this.state.pin));
             alert("Card has been created")
             setTimeout(() => {
