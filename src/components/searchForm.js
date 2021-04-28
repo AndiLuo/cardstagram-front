@@ -37,7 +37,7 @@ function SearchForm(props) {
       props.setLoading();
       props.fetchPins(props.searchText)
     }
-    if (e.target.value.length == 0 ){
+    if (e.target.value.length === 0 ){
       props.searchPin(e.target.value);
       props.setLoading();
       props.fetchPins(props.searchText)

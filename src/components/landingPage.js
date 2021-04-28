@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import SearchForm from './searchForm';
 import {connect} from 'react-redux';
 import PinContainer from './pinContainer';
-import Spinner from './spinner'
+// import Spinner from './spinner'
 import { useHistory } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
@@ -67,7 +67,7 @@ function LandingPage(props) {
         history.push('/createPin')
       }
       
-    const loading = props.loading
+    // const loading = props.loading
   
   
     return(
