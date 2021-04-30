@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { connect } from "react-redux";
 import Pin from "./pin";
 import TextField from '@material-ui/core/TextField';
