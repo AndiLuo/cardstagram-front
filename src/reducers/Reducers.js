@@ -11,6 +11,7 @@ const initialState = {
   pin: {}
 }
 
+
 export const landingReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOADING:

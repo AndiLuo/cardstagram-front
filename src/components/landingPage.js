@@ -7,7 +7,7 @@ import { useHistory } from "react-router-dom";
 import { withRouter } from 'react-router-dom';
 import Button from '@material-ui/core/Button';
 import { withStyles } from "@material-ui/core/styles";
-
+import {fetchPins, assignPins} from "../actions/fetchAction"
 
 const styles = {
   root: {
@@ -23,7 +23,6 @@ const styles = {
   }
 };
 
-
 const mapStateToProps = state => ({
     loading: state.pins.loading,
   })
@@ -34,12 +33,17 @@ function LandingPage(props) {
     const [loadMessage, setLoadMessage] = useState('')
 
     useEffect(() => {
+      //Run axios fetch action on landing page
+      props.fetchPins()
       setLoadMessage('Please wait while cards load in......')
       setTimeout(() => {
         setLoaded(true)
         setLoadMessage('')
-      }, 3000)
+      }, 3500)
     }, [])
+
+    //Runs the payload action populating the gallery in global state within reduceer
+    props.assignPins()
 
     const jumboStyle = {
         color: "white",
@@ -76,7 +80,7 @@ function LandingPage(props) {
                 <h1>Cardstagram</h1>
             </div>
             <div align="center">
-            <SearchForm />
+        
             <span>
                 <Button 
                 onClick = {redirectCreate}
@@ -88,9 +92,10 @@ function LandingPage(props) {
                 </Button>
             </span>
             <div>
+              <br/>
              
-                <div>
-                {loaded ?  <PinContainer/>: " " }
+                <div style ={{fontSize:"2vw", color:"white"}}>
+                {loaded ?  <PinContainer/>: "If this message dissapears almost instantly, the Heroku server is probably down......" }
                </div>
               
             </div>
@@ -104,4 +109,4 @@ function LandingPage(props) {
     )
 }
 
-export default withRouter(connect(mapStateToProps)(withStyles(styles)(LandingPage)));
+export default withRouter(connect(mapStateToProps, {fetchPins, assignPins})(withStyles(styles)(LandingPage)));

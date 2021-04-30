@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import {searchPin, fetchPins, setLoading} from "../actions/fetchAction";
+import {searchPin, fetchPins, setLoading, assignPins} from "../actions/fetchAction";
 import TextField from '@material-ui/core/TextField';
 import { withStyles } from "@material-ui/core/styles";
 
@@ -18,35 +18,30 @@ const styles = {
 };
 
 const mapStateToProps = (state) => ({
-  searchText: state.pins.searchText
+  searchText: state.pins.searchText,
 })
 
 function SearchForm(props) {
 
   const { classes } = props
 
-  useEffect(() => {
-    props.fetchPins(props.searchText)
-  })
 
   // sets search state to input value, call fetchPins here for auto fetch on input change
   const handleChange = (e) => {
     e.preventDefault()
     if (e.target.value.length >= 3 ){
       props.searchPin(e.target.value);
-      props.setLoading();
-      props.fetchPins(props.searchText)
+      props.assignPins(props.searchText)
     }
     if (e.target.value.length === 0 ){
       props.searchPin(e.target.value);
-      props.setLoading();
-      props.fetchPins(props.searchText)
+      props.assignPins(props.searchText)
     }
   };
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    props.fetchPins(props.searchText)
+    props.assignPins(props.searchText)
     props.setLoading();
 
   }
@@ -82,5 +77,5 @@ function SearchForm(props) {
   );
 }
 
-export default connect(mapStateToProps, {searchPin, fetchPins, setLoading})(withStyles(styles)(SearchForm));
+export default connect(mapStateToProps, {assignPins, searchPin, fetchPins, setLoading})(withStyles(styles)(SearchForm));
 

@@ -9,6 +9,7 @@ import Typography from '@material-ui/core/Typography';
 
 function Pin(props) {
     const pin = props;
+    console.log(pin)
     return (
         <div>
             <link
