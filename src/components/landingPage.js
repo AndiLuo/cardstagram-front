@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react';
-import SearchForm from './searchForm';
 import {connect} from 'react-redux';
 import PinContainer from './pinContainer';
 // import Spinner from './spinner'

@@ -17,7 +17,6 @@ export const searchPin = (text) => (dispatch) => {
 }
 
 const gallery = []
-const localGallery= []
 
 export const fetchPins = () => (dispatch) => {
   // initialize gallery in the beginning so it empties each call
