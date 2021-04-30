@@ -40,7 +40,7 @@ function PinContainer(props) {
       setFilter(e.target.value)
       setSearch(false)
     }
-    if (e.target.value.length == 0) {
+    if (e.target.value.length === 0) {
       setFilter(e.target.value)
       setSearch(false)
     }
