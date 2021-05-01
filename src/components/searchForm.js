@@ -75,5 +75,5 @@ function SearchForm(props) {
   );
 }
 
-export default connect(mapStateToProps, {assignPins, searchPin, fetchPins, setLoading})(withStyles(styles)(SearchForm));
+export default connect(mapStateToProps, {assignPins, searchPin, fetchPins, setLoading})(SearchForm));
 

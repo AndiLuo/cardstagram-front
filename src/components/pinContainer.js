@@ -5,22 +5,27 @@ import TextField from '@material-ui/core/TextField';
 import { Grid } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles'
 
+
 const useStyles = makeStyles(theme => ({
   root: {
+    "& label.Mui-focused" :{
+      color: "white"
+    },
     "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
       borderColor: "white",
       flexGrow: 1,
-      padding: theme.spacing(5),
       color: "white"
-
     },
-    input: {
-      color: "white",
-      textAlign: "center",
-      justifyContent: "center"
-    }
+  },
+  inputRoot: {
+    color:"white",
+    fontFamily:"Consolas",
+    fontSize: "1vw"
   }
-}))
+}));
+
+
+
 
 const mapStateToProps = (state) => ({
   pins: state.fetchReducer.pins,
@@ -59,11 +64,11 @@ function PinContainer(props) {
           label="Search Cards"
           placeholder="Find You"
           onChange={handleChange}
-          className={classes.root}
           variant="outlined"
           defaultValue={filter}
-          InputProps={{
-            className: classes.input
+          classes = {classes}
+          InputProps ={{
+            className : classes.inputRoot
           }}
           InputLabelProps={{
             style: {
@@ -73,7 +78,7 @@ function PinContainer(props) {
               fontFamily: "Consolas",
             }
           }}
-          style={{ width: "50%", height: "40%" }}
+          style={{ width: "50%", height: "40%", color:"white" }}
         />
       </form>
       <br />
