@@ -66,7 +66,7 @@ class NewPin extends Component {
                 this.setState({
                     send: true
                 })
-            }, 200)
+            }, 100)
         }
        
     }
