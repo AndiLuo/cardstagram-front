@@ -94,7 +94,7 @@ function LandingPage(props) {
               <br/>
              
                 <div style ={{fontSize:"2vw", color:"white"}}>
-                {loaded ?  <PinContainer/>: "If this message dissapears almost instantly, the Heroku server is probably down......" }
+                {loaded ?  <PinContainer/>: "If this message dissapears without anything appearing, the Heroku server is probably down......" }
                </div>
               
             </div>
