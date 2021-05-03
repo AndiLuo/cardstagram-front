@@ -111,10 +111,10 @@ class NewPin extends Component {
                 flexDirection: "column",
                 justifyContent: "center",
                 textAlign: "center"}}>
-                <Button style={{fontFamily: "Consolas", borderColor:"white", fontSize:"1vw"}}>
-                    <Link to="/" style={{color:"white", borderColor:"white", fontSize:"2vw"}}>
+                <Button style={{fontFamily: "Consolas", borderColor:"white", fontSize:"1vw", outline: "2px solid white"}}>
+                    <a onClick={() => {window.location.href="/"}} style={{color:"white", borderColor:"white", fontSize:"2vw"}}>
                         Back to landing page
-                    </Link>
+                    </a>
                 </Button>
                 <div>
                     <form labelWidth={60}>
